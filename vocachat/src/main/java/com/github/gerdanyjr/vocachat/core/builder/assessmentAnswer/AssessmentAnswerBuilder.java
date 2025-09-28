@@ -6,6 +6,7 @@ import com.github.gerdanyjr.vocachat.core.model.AssessmentAnswer;
 import com.github.gerdanyjr.vocachat.core.model.Question;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class AssessmentAnswerBuilder {
     private Long answerId;
@@ -14,6 +15,8 @@ public class AssessmentAnswerBuilder {
     private String answer;
     private AnswerState answerState;
     private BigDecimal compatibilityPercentage;
+    private LocalDateTime createdAt;
+    private LocalDateTime processedAt;
 
     public AssessmentAnswer build() {
         return new AssessmentAnswer(
@@ -22,7 +25,9 @@ public class AssessmentAnswerBuilder {
                 question,
                 answer,
                 answerState,
-                compatibilityPercentage
+                compatibilityPercentage,
+                createdAt,
+                processedAt
         );
     }
 
@@ -53,6 +58,16 @@ public class AssessmentAnswerBuilder {
 
     public AssessmentAnswerBuilder compatibilityPercentage(BigDecimal compatibilityPercentage) {
         this.compatibilityPercentage = compatibilityPercentage;
+        return this;
+    }
+
+    public AssessmentAnswerBuilder createdAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+        return this;
+    }
+
+    public AssessmentAnswerBuilder processedAt(LocalDateTime processedAt) {
+        this.processedAt = processedAt;
         return this;
     }
 }

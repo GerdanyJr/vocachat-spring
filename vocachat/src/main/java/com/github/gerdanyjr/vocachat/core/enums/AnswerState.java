@@ -7,9 +7,10 @@ import java.util.Map;
 
 @Getter
 public enum AnswerState {
-    PENDING(1, "Pending"),
-    DONE(2, "Done"),
-    FAILED(3, "Failed");
+    CREATED(1, "Created"),
+    PROCESSING(2, "Processing"),
+    PROCESSED(3, "Processed"),
+    FAILED(4, "Failed");
 
     private final Integer value;
     private final String description;

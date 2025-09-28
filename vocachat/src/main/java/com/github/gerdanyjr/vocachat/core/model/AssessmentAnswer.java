@@ -1,12 +1,9 @@
 package com.github.gerdanyjr.vocachat.core.model;
 
 import com.github.gerdanyjr.vocachat.core.enums.AnswerState;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class AssessmentAnswer {
     private Long answerId;
@@ -15,6 +12,8 @@ public class AssessmentAnswer {
     private String answer;
     private AnswerState answerState;
     private BigDecimal compatibilityPercentage;
+    private LocalDateTime createdAt;
+    private LocalDateTime processedAt;
 
     public AssessmentAnswer(
             Long answerId,
@@ -22,13 +21,23 @@ public class AssessmentAnswer {
             Question question,
             String answer,
             AnswerState answerState,
-            BigDecimal compatibilityPercentage
+            BigDecimal compatibilityPercentage,
+            LocalDateTime createdAt,
+            LocalDateTime processedAt
     ) {
         this.answerId = answerId;
         this.assessment = assessment;
         this.question = question;
         this.answer = answer;
         this.answerState = answerState;
+        this.compatibilityPercentage = compatibilityPercentage;
+        this.createdAt = createdAt;
+        this.processedAt = processedAt;
+    }
+
+    public void markAsProcessed(BigDecimal compatibilityPercentage, LocalDateTime processedAt) {
+        this.answerState = AnswerState.PROCESSED;
+        this.processedAt = processedAt;
         this.compatibilityPercentage = compatibilityPercentage;
     }
 
@@ -54,5 +63,13 @@ public class AssessmentAnswer {
 
     public BigDecimal getCompatibilityPercentage() {
         return compatibilityPercentage;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public LocalDateTime getProcessedAt() {
+        return processedAt;
     }
 }

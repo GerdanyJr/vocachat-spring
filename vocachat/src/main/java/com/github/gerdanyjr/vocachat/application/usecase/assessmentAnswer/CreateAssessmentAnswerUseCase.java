@@ -14,6 +14,8 @@ import com.github.gerdanyjr.vocachat.core.model.Assessment;
 import com.github.gerdanyjr.vocachat.core.model.AssessmentAnswer;
 import com.github.gerdanyjr.vocachat.core.model.Question;
 
+import java.time.LocalDateTime;
+
 public class CreateAssessmentAnswerUseCase {
     private final IAssessmentAnswerRepository IAssessmentAnswerRepository;
     private final IAssessmentRepository IAssessmentRepository;
@@ -45,7 +47,8 @@ public class CreateAssessmentAnswerUseCase {
                 .assessment(assessment)
                 .question(question)
                 .answer(createAssessmentAnswerRequest.answer())
-                .answerState(AnswerState.PENDING)
+                .answerState(AnswerState.CREATED)
+                .createdAt(LocalDateTime.now())
                 .build());
 
         domainEventPublisher.publish(new AssessmentAnswerCreatedEvent(
