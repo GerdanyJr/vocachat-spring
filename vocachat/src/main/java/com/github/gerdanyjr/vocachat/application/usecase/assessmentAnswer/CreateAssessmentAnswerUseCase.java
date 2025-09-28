@@ -18,13 +18,13 @@ public class CreateAssessmentAnswerUseCase {
     private final IAssessmentAnswerRepository IAssessmentAnswerRepository;
     private final IAssessmentRepository IAssessmentRepository;
     private final IQuestionRepository questionRepository;
-    private final IDomainEventPublisher domainEventPublisher;
+    private final IDomainEventPublisher<AssessmentAnswerCreatedEvent> domainEventPublisher;
 
     public CreateAssessmentAnswerUseCase(
             IAssessmentAnswerRepository IAssessmentAnswerRepository,
             IAssessmentRepository IAssessmentRepository,
             IQuestionRepository questionRepository,
-            IDomainEventPublisher domainEventPublisher
+            IDomainEventPublisher<AssessmentAnswerCreatedEvent> domainEventPublisher
     ) {
         this.IAssessmentAnswerRepository = IAssessmentAnswerRepository;
         this.IAssessmentRepository = IAssessmentRepository;
