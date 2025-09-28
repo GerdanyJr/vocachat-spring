@@ -1,28 +1,28 @@
 package com.github.gerdanyjr.vocachat.application.usecase.assessment;
 
 import com.github.gerdanyjr.vocachat.application.dto.out.assessment.AssessmentResponse;
-import com.github.gerdanyjr.vocachat.application.mapper.assessment.AssessmentMapper;
-import com.github.gerdanyjr.vocachat.application.repository.assessment.AssessmentRepository;
+import com.github.gerdanyjr.vocachat.application.mapper.assessment.IAssessmentMapper;
+import com.github.gerdanyjr.vocachat.application.repository.assessment.IAssessmentRepository;
 import com.github.gerdanyjr.vocachat.core.exception.impl.user.UserNotFoundException;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 
 public class FindAssessmentByUserIdUseCase {
-    private final AssessmentRepository assessmentRepository;
-    private final AssessmentMapper assessmentMapper;
+    private final IAssessmentRepository IAssessmentRepository;
+    private final IAssessmentMapper IAssessmentMapper;
 
     public FindAssessmentByUserIdUseCase(
-            AssessmentRepository assessmentRepository,
-            AssessmentMapper assessmentMapper
+            IAssessmentRepository IAssessmentRepository,
+            IAssessmentMapper IAssessmentMapper
     ) {
-        this.assessmentRepository = assessmentRepository;
-        this.assessmentMapper = assessmentMapper;
+        this.IAssessmentRepository = IAssessmentRepository;
+        this.IAssessmentMapper = IAssessmentMapper;
     }
 
     public AssessmentResponse execute(Long userId) {
-        Assessment foundAssesment = assessmentRepository
+        Assessment foundAssesment = IAssessmentRepository
                 .findByUserId(userId)
                 .orElseThrow(UserNotFoundException::new);
 
-        return assessmentMapper.fromAssessmentToAssessmentResponse(foundAssesment);
+        return IAssessmentMapper.fromAssessmentToAssessmentResponse(foundAssesment);
     }
 }

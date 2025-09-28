@@ -4,7 +4,7 @@ import com.github.gerdanyjr.vocachat.core.model.Assessment;
 
 import java.util.Optional;
 
-public interface AssessmentRepository {
+public interface IAssessmentRepository {
     Assessment create(Assessment assessment);
 
     Optional<Assessment> findByUserId(Long userId);
