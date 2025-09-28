@@ -4,7 +4,7 @@ import com.github.gerdanyjr.vocachat.application.dto.in.assessment.CreateAssessm
 import com.github.gerdanyjr.vocachat.application.repository.assessment.AssessmentRepository;
 import com.github.gerdanyjr.vocachat.application.repository.user.UserRepository;
 import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
-import com.github.gerdanyjr.vocachat.core.exception.user.UserNotFoundException;
+import com.github.gerdanyjr.vocachat.core.exception.impl.user.UserNotFoundException;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 import com.github.gerdanyjr.vocachat.core.model.User;
 

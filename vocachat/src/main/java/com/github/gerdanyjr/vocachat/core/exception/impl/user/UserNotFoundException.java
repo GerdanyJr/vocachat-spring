@@ -1,4 +1,4 @@
-package com.github.gerdanyjr.vocachat.core.exception.user;
+package com.github.gerdanyjr.vocachat.core.exception.impl.user;
 
 import com.github.gerdanyjr.vocachat.core.exception.base.NotFoundException;
 
