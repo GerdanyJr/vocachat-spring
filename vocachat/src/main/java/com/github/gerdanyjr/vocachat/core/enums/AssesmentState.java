@@ -8,6 +8,7 @@ import java.util.Map;
 @Getter
 public enum AssesmentState {
     IN_PROGRESS(1, "In Progress"),
+    PROCESSING(2, "Processing"),
     FINISHED(1, "Finished");
 
     private final Integer value;

@@ -32,6 +32,11 @@ public class Assessment {
         this.answers = answers;
     }
 
+    public void finish() {
+        this.finishedAt = LocalDateTime.now();
+        this.assesmentState = AssesmentState.PROCESSING;
+    }
+
     public Long getAssesmentId() {
         return assesmentId;
     }
@@ -60,24 +65,12 @@ public class Assessment {
         return startedAt;
     }
 
-    public void setStartedAt(LocalDateTime startedAt) {
-        this.startedAt = startedAt;
-    }
-
     public LocalDateTime getFinishedAt() {
         return finishedAt;
     }
 
-    public void setFinishedAt(LocalDateTime finishedAt) {
-        this.finishedAt = finishedAt;
-    }
-
     public AssesmentState getAssesmentState() {
         return assesmentState;
-    }
-
-    public void setAssesmentState(AssesmentState assesmentState) {
-        this.assesmentState = assesmentState;
     }
 
     public List<AssessmentAnswer> getAnswers() {

@@ -10,4 +10,6 @@ public interface IAssessmentRepository {
     Optional<Assessment> findByUserId(Long userId);
 
     Optional<Assessment> findById(Long assessmentId);
+
+    void update(Assessment assessment);
 }
