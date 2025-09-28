@@ -8,4 +8,6 @@ public interface AssessmentRepository {
     Assessment create(Assessment assessment);
 
     Optional<Assessment> findByUserId(Long userId);
+
+    Optional<Assessment> findById(Long assessmentId);
 }

@@ -31,4 +31,28 @@ public class AssessmentAnswer {
         this.answerState = answerState;
         this.compatibilityPercentage = compatibilityPercentage;
     }
+
+    public Long getAnswerId() {
+        return answerId;
+    }
+
+    public Assessment getAssessment() {
+        return assessment;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public AnswerState getAnswerState() {
+        return answerState;
+    }
+
+    public BigDecimal getCompatibilityPercentage() {
+        return compatibilityPercentage;
+    }
 }

@@ -16,5 +16,9 @@ public class QuestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
+    @Column(nullable = false)
     private Integer dimension;
+
+    @Column(length = 1000, nullable = false)
+    private String questionTxt;
 }
