@@ -3,13 +3,13 @@ package com.github.gerdanyjr.vocachat.application.usecase.assessment;
 import com.github.gerdanyjr.vocachat.application.dto.in.assessment.CreateAssessmentRequest;
 import com.github.gerdanyjr.vocachat.application.repository.assessment.AssessmentRepository;
 import com.github.gerdanyjr.vocachat.application.repository.user.UserRepository;
+import com.github.gerdanyjr.vocachat.core.builder.assessment.AssessmentBuilder;
 import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
 import com.github.gerdanyjr.vocachat.core.exception.impl.user.UserNotFoundException;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 import com.github.gerdanyjr.vocachat.core.model.User;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 public class CreateAssessmentUseCase {
     private final AssessmentRepository assessmentRepository;
@@ -28,14 +28,11 @@ public class CreateAssessmentUseCase {
                 .findById(request.userId())
                 .orElseThrow(UserNotFoundException::new);
 
-        Assessment assessment = new Assessment(null,
-                foundUser,
-                null,
-                LocalDateTime.now(),
-                null,
-                AssesmentState.IN_PROGRESS,
-                List.of()
-        );
+        Assessment assessment = new AssessmentBuilder()
+                .user(foundUser)
+                .startedAt(LocalDateTime.now())
+                .assessmentState(AssesmentState.IN_PROGRESS)
+                .build();
 
         return assessmentRepository.create(assessment);
     }
