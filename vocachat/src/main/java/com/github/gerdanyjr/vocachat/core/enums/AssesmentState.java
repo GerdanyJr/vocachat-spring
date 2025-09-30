@@ -8,7 +8,7 @@ import java.util.Map;
 @Getter
 public enum AssesmentState {
     IN_PROGRESS(1, "In Progress"),
-    FINISHED(3, "Finished");
+    FINISHED(2, "Finished");
 
     private final Integer value;
     private final String description;
