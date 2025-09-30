@@ -17,25 +17,25 @@ import com.github.gerdanyjr.vocachat.core.model.Question;
 import java.time.LocalDateTime;
 
 public class CreateAssessmentAnswerUseCase {
-    private final IAssessmentAnswerRepository IAssessmentAnswerRepository;
-    private final IAssessmentRepository IAssessmentRepository;
+    private final IAssessmentAnswerRepository assessmentAnswerRepository;
+    private final IAssessmentRepository assessmentRepository;
     private final IQuestionRepository questionRepository;
     private final IDomainEventPublisher<AssessmentAnswerCreatedEvent> domainEventPublisher;
 
     public CreateAssessmentAnswerUseCase(
-            IAssessmentAnswerRepository IAssessmentAnswerRepository,
-            IAssessmentRepository IAssessmentRepository,
+            IAssessmentAnswerRepository assessmentAnswerRepository,
+            IAssessmentRepository assessmentRepository,
             IQuestionRepository questionRepository,
             IDomainEventPublisher<AssessmentAnswerCreatedEvent> domainEventPublisher
     ) {
-        this.IAssessmentAnswerRepository = IAssessmentAnswerRepository;
-        this.IAssessmentRepository = IAssessmentRepository;
+        this.assessmentAnswerRepository = assessmentAnswerRepository;
+        this.assessmentRepository = assessmentRepository;
         this.questionRepository = questionRepository;
         this.domainEventPublisher = domainEventPublisher;
     }
 
     public void execute(CreateAssessmentAnswerRequest createAssessmentAnswerRequest) {
-        Assessment assessment = IAssessmentRepository
+        Assessment assessment = assessmentRepository
                 .findById(createAssessmentAnswerRequest.assessmentId())
                 .orElseThrow(AssessmentNotFoundException::new);
 
@@ -43,7 +43,7 @@ public class CreateAssessmentAnswerUseCase {
                 .findById(createAssessmentAnswerRequest.questionId())
                 .orElseThrow(QuestionNotFoundException::new);
 
-        AssessmentAnswer assessmentAnswer = IAssessmentAnswerRepository.create(new AssessmentAnswerBuilder()
+        AssessmentAnswer assessmentAnswer = assessmentAnswerRepository.create(new AssessmentAnswerBuilder()
                 .assessment(assessment)
                 .question(question)
                 .answer(createAssessmentAnswerRequest.answer())

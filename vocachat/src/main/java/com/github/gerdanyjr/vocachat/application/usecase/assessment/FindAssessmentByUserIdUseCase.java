@@ -7,22 +7,22 @@ import com.github.gerdanyjr.vocachat.core.exception.impl.user.UserNotFoundExcept
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 
 public class FindAssessmentByUserIdUseCase {
-    private final IAssessmentRepository IAssessmentRepository;
-    private final IAssessmentMapper IAssessmentMapper;
+    private final IAssessmentRepository assessmentRepository;
+    private final IAssessmentMapper assessmentMapper;
 
     public FindAssessmentByUserIdUseCase(
-            IAssessmentRepository IAssessmentRepository,
-            IAssessmentMapper IAssessmentMapper
+            IAssessmentRepository assessmentRepository,
+            IAssessmentMapper assessmentMapper
     ) {
-        this.IAssessmentRepository = IAssessmentRepository;
-        this.IAssessmentMapper = IAssessmentMapper;
+        this.assessmentRepository = assessmentRepository;
+        this.assessmentMapper = assessmentMapper;
     }
 
     public AssessmentResponse execute(Long userId) {
-        Assessment foundAssesment = IAssessmentRepository
+        Assessment foundAssesment = assessmentRepository
                 .findByUserId(userId)
                 .orElseThrow(UserNotFoundException::new);
 
-        return IAssessmentMapper.fromAssessmentToAssessmentResponse(foundAssesment);
+        return assessmentMapper.fromAssessmentToAssessmentResponse(foundAssesment);
     }
 }

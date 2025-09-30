@@ -12,19 +12,19 @@ import com.github.gerdanyjr.vocachat.core.model.User;
 import java.time.LocalDateTime;
 
 public class CreateAssessmentUseCase {
-    private final IAssessmentRepository IAssessmentRepository;
-    private final IUserRepository IUserRepository;
+    private final IAssessmentRepository assessmentRepository;
+    private final IUserRepository userRepository;
 
     public CreateAssessmentUseCase(
-            IAssessmentRepository IAssessmentRepository,
-            IUserRepository IUserRepository
+            IAssessmentRepository assessmentRepository,
+            IUserRepository userRepository
     ) {
-        this.IAssessmentRepository = IAssessmentRepository;
-        this.IUserRepository = IUserRepository;
+        this.assessmentRepository = assessmentRepository;
+        this.userRepository = userRepository;
     }
 
     public Assessment execute(CreateAssessmentRequest request) {
-        User foundUser = IUserRepository
+        User foundUser = userRepository
                 .findById(request.userId())
                 .orElseThrow(UserNotFoundException::new);
 
@@ -34,6 +34,6 @@ public class CreateAssessmentUseCase {
                 .assessmentState(AssesmentState.IN_PROGRESS)
                 .build();
 
-        return IAssessmentRepository.create(assessment);
+        return assessmentRepository.create(assessment);
     }
 }
