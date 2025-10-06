@@ -3,6 +3,7 @@ package com.github.gerdanyjr.vocachat.core.builder.assessmentAnswer;
 import com.github.gerdanyjr.vocachat.core.enums.AnswerState;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 import com.github.gerdanyjr.vocachat.core.model.AssessmentAnswer;
+import com.github.gerdanyjr.vocachat.core.model.Message;
 import com.github.gerdanyjr.vocachat.core.model.Question;
 
 import java.math.BigDecimal;
@@ -12,7 +13,7 @@ public class AssessmentAnswerBuilder {
     private Long answerId;
     private Assessment assessment;
     private Question question;
-    private String answer;
+    private Message message;
     private AnswerState answerState;
     private BigDecimal compatibilityPercentage;
     private LocalDateTime createdAt;
@@ -23,7 +24,7 @@ public class AssessmentAnswerBuilder {
                 answerId,
                 assessment,
                 question,
-                answer,
+                message,
                 answerState,
                 compatibilityPercentage,
                 createdAt,
@@ -46,8 +47,8 @@ public class AssessmentAnswerBuilder {
         return this;
     }
 
-    public AssessmentAnswerBuilder answer(String answer) {
-        this.answer = answer;
+    public AssessmentAnswerBuilder message(Message message) {
+        this.message = message;
         return this;
     }
 

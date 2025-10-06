@@ -1,6 +1,6 @@
 package com.github.gerdanyjr.vocachat.core.model;
 
-import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
+import com.github.gerdanyjr.vocachat.core.enums.AssessmentState;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,57 +8,57 @@ import java.util.List;
 public class Assessment {
     private Long assesmentId;
     private User user;
-    private Integer testType;
+    private AssessmentType assessmentType;
     private LocalDateTime startedAt;
+    private LocalDateTime processedAt;
     private LocalDateTime finishedAt;
-    private AssesmentState assesmentState;
+    private AssessmentState assessmentState;
     private List<AssessmentAnswer> answers;
 
     public Assessment(
             Long assesmentId,
             User user,
-            Integer testType,
+            AssessmentType assessmentType,
             LocalDateTime startedAt,
+            LocalDateTime processedAt,
             LocalDateTime finishedAt,
-            AssesmentState assesmentState,
+            AssessmentState assessmentState,
             List<AssessmentAnswer> answers
     ) {
         this.assesmentId = assesmentId;
         this.user = user;
-        this.testType = testType;
+        this.assessmentType = assessmentType;
         this.startedAt = startedAt;
+        this.processedAt = processedAt;
         this.finishedAt = finishedAt;
-        this.assesmentState = assesmentState;
+        this.assessmentState = assessmentState;
         this.answers = answers;
     }
 
     public void finish() {
         this.finishedAt = LocalDateTime.now();
-        this.assesmentState = AssesmentState.PROCESSING;
+        this.assessmentState = AssessmentState.PROCESSING;
+    }
+
+    public void process() {
+        this.processedAt = LocalDateTime.now();
+        this.assessmentState = AssessmentState.FINISHED;
+    }
+
+    public LocalDateTime getProcessedAt() {
+        return processedAt;
     }
 
     public Long getAssesmentId() {
         return assesmentId;
     }
 
-    public void setAssesmentId(Long assesmentId) {
-        this.assesmentId = assesmentId;
-    }
-
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Integer getTestType() {
-        return testType;
-    }
-
-    public void setTestType(Integer testType) {
-        this.testType = testType;
+    public AssessmentType getAssessmentType() {
+        return assessmentType;
     }
 
     public LocalDateTime getStartedAt() {
@@ -69,15 +69,12 @@ public class Assessment {
         return finishedAt;
     }
 
-    public AssesmentState getAssesmentState() {
-        return assesmentState;
+    public AssessmentState getAssessmentState() {
+        return assessmentState;
     }
 
     public List<AssessmentAnswer> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(List<AssessmentAnswer> answers) {
-        this.answers = answers;
-    }
 }

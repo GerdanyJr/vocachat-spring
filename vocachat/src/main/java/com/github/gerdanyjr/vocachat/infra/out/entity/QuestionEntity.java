@@ -16,8 +16,8 @@ public class QuestionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long questionId;
 
-    @Column(nullable = false)
-    private Integer dimension;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AssessmentTypeEntity assessmentType;
 
     @Column(length = 1000, nullable = false)
     private String questionTxt;

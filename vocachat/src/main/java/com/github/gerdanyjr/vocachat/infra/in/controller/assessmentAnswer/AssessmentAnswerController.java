@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("api/v1/assessment-answer")
 public class AssessmentAnswerController {
-    private final CreateAssessmentAnswerUseCase createAssessmentAnswerUseCase;
-
-    public AssessmentAnswerController(CreateAssessmentAnswerUseCase createAssessmentAnswerUseCase) {
-        this.createAssessmentAnswerUseCase = createAssessmentAnswerUseCase;
-    }
-
-    @PostMapping
-    public ResponseEntity<Void> createAssessmentAnswer(
-            @RequestBody CreateAssessmentAnswerRequest assessmentAnswerRequest
-    ) {
-        createAssessmentAnswerUseCase.execute(assessmentAnswerRequest);
-
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .build();
-    }
+//    private final CreateAssessmentAnswerUseCase createAssessmentAnswerUseCase;
+//
+//    public AssessmentAnswerController(CreateAssessmentAnswerUseCase createAssessmentAnswerUseCase) {
+//        this.createAssessmentAnswerUseCase = createAssessmentAnswerUseCase;
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<Void> createAssessmentAnswer(
+//            @RequestBody CreateAssessmentAnswerRequest assessmentAnswerRequest
+//    ) {
+//        createAssessmentAnswerUseCase.execute(assessmentAnswerRequest);
+//
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .build();
+//    }
 }

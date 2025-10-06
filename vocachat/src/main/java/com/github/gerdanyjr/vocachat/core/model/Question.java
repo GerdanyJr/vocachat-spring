@@ -2,20 +2,12 @@ package com.github.gerdanyjr.vocachat.core.model;
 
 public class Question {
     private Long questionId;
-    private Integer dimension;
+    private AssessmentDimension dimension;
     private String questionTxt;
 
-    public Question(Long questionId, Integer dimension, String questionTxt) {
+    public Question(Long questionId, AssessmentDimension dimension, String questionTxt) {
         this.questionId = questionId;
         this.dimension = dimension;
-        this.questionTxt = questionTxt;
-    }
-
-    public String getQuestionTxt() {
-        return questionTxt;
-    }
-
-    public void setQuestionTxt(String questionTxt) {
         this.questionTxt = questionTxt;
     }
 
@@ -23,15 +15,11 @@ public class Question {
         return questionId;
     }
 
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
-    }
-
-    public Integer getDimension() {
+    public AssessmentDimension getDimension() {
         return dimension;
     }
 
-    public void setDimension(Integer dimension) {
-        this.dimension = dimension;
+    public String getQuestionTxt() {
+        return questionTxt;
     }
 }

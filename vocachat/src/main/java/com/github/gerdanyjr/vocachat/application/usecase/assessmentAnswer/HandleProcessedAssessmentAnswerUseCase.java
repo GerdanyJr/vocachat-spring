@@ -5,7 +5,7 @@ import com.github.gerdanyjr.vocachat.application.event.pub.IDomainEventPublisher
 import com.github.gerdanyjr.vocachat.application.event.pub.assessmentAnswer.AssessmentAnswerProcessedEvent;
 import com.github.gerdanyjr.vocachat.application.repository.assessment.IAssessmentRepository;
 import com.github.gerdanyjr.vocachat.application.repository.assessmentAnswer.IAssessmentAnswerRepository;
-import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
+import com.github.gerdanyjr.vocachat.core.enums.AssessmentState;
 import com.github.gerdanyjr.vocachat.core.exception.impl.assessment.AssessmentNotFoundException;
 import com.github.gerdanyjr.vocachat.core.exception.impl.assessmentAnswer.AssessmentAnswerNotFoundException;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
@@ -44,7 +44,7 @@ public class HandleProcessedAssessmentAnswerUseCase {
 
         assessmentAnswerRepository.update(assessmentAnswer);
 
-        if (assessment.getAssesmentState() == AssesmentState.FINISHED) {
+        if (assessment.getAssessmentState() == AssessmentState.FINISHED) {
             assessmentAnswerProcessedEventPublisher.publish(new AssessmentAnswerProcessedEvent(
                     processedAnswerDTO.assessmentId()
             ));

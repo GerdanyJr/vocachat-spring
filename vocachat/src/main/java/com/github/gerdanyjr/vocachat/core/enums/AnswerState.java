@@ -30,4 +30,12 @@ public enum AnswerState {
     public static AnswerState fromValue(int value) {
         return mapValues.get(value);
     }
+
+    public Integer getValue() {
+        return value;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }

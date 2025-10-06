@@ -9,7 +9,7 @@ public class AssessmentAnswer {
     private Long answerId;
     private Assessment assessment;
     private Question question;
-    private String answer;
+    private Message message;
     private AnswerState answerState;
     private BigDecimal compatibilityPercentage;
     private LocalDateTime createdAt;
@@ -19,7 +19,7 @@ public class AssessmentAnswer {
             Long answerId,
             Assessment assessment,
             Question question,
-            String answer,
+            Message message,
             AnswerState answerState,
             BigDecimal compatibilityPercentage,
             LocalDateTime createdAt,
@@ -28,7 +28,7 @@ public class AssessmentAnswer {
         this.answerId = answerId;
         this.assessment = assessment;
         this.question = question;
-        this.answer = answer;
+        this.message = message;
         this.answerState = answerState;
         this.compatibilityPercentage = compatibilityPercentage;
         this.createdAt = createdAt;
@@ -53,8 +53,8 @@ public class AssessmentAnswer {
         return question;
     }
 
-    public String getAnswer() {
-        return answer;
+    public Message getMessage() {
+        return message;
     }
 
     public AnswerState getAnswerState() {

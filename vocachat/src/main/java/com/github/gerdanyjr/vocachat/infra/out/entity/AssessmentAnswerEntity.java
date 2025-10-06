@@ -16,8 +16,8 @@ public class AssessmentAnswerEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "answer_id")
-    private Long answerId;
+    @Column(name = "assessment_answer_id")
+    private Long assessmentAnswerId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "assessment_id")

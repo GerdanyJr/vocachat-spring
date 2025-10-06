@@ -4,7 +4,7 @@ import com.github.gerdanyjr.vocachat.application.dto.in.assessment.CreateAssessm
 import com.github.gerdanyjr.vocachat.application.repository.assessment.IAssessmentRepository;
 import com.github.gerdanyjr.vocachat.application.repository.user.IUserRepository;
 import com.github.gerdanyjr.vocachat.core.builder.assessment.AssessmentBuilder;
-import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
+import com.github.gerdanyjr.vocachat.core.enums.AssessmentState;
 import com.github.gerdanyjr.vocachat.core.exception.impl.user.UserNotFoundException;
 import com.github.gerdanyjr.vocachat.core.model.Assessment;
 import com.github.gerdanyjr.vocachat.core.model.User;
@@ -31,7 +31,7 @@ public class CreateAssessmentUseCase {
         Assessment assessment = new AssessmentBuilder()
                 .user(foundUser)
                 .startedAt(LocalDateTime.now())
-                .assessmentState(AssesmentState.IN_PROGRESS)
+                .assessmentState(AssessmentState.CREATED)
                 .build();
 
         return assessmentRepository.create(assessment);

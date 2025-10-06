@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(name = "assessment_score")
+@Table(name = "assessment_score", uniqueConstraints = @UniqueConstraint(columnNames = {"assessment_id", "dimension_id"}))
 public class AssessmentScoreEntity {
 
     @Id
@@ -23,11 +23,12 @@ public class AssessmentScoreEntity {
     @JoinColumn(name = "assessment_id")
     private AssessmentEntity assessmentEntity;
 
-    @Column(name = "score", nullable = false)
+    @Column(name = "score", nullable = false, precision = 5, scale = 2)
     private BigDecimal score;
 
-    @Column(name = "dimension", length = 20, nullable = false)
-    private String dimension;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dimension_id", nullable = false)
+    private AssessmentDimensionEntity dimension;
 
     @Column(name = "calculated_at", nullable = false)
     private LocalDateTime calculatedAt;

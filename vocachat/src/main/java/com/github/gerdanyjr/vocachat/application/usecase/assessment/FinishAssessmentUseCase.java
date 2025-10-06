@@ -4,7 +4,7 @@ import com.github.gerdanyjr.vocachat.application.event.pub.IDomainEventPublisher
 import com.github.gerdanyjr.vocachat.application.event.pub.assessment.AssessmentFinishedEvent;
 import com.github.gerdanyjr.vocachat.application.repository.assessment.IAssessmentRepository;
 import com.github.gerdanyjr.vocachat.core.enums.AnswerState;
-import com.github.gerdanyjr.vocachat.core.enums.AssesmentState;
+import com.github.gerdanyjr.vocachat.core.enums.AssessmentState;
 import com.github.gerdanyjr.vocachat.core.exception.impl.assessment.AssessmentAlreadyFinishedException;
 import com.github.gerdanyjr.vocachat.core.exception.impl.assessment.AssessmentNotFoundException;
 import com.github.gerdanyjr.vocachat.core.exception.impl.assessment.MinimumAnswersNotMetException;
@@ -45,7 +45,7 @@ public class FinishAssessmentUseCase {
         if (assessment.getAnswers().size() < 5) {
             throw new MinimumAnswersNotMetException();
         }
-        if (assessment.getAssesmentState() != AssesmentState.IN_PROGRESS) {
+        if (assessment.getAssessmentState() != AssessmentState.CREATED) {
             throw new AssessmentAlreadyFinishedException();
         }
     }

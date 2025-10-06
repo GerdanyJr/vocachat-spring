@@ -7,11 +7,21 @@ import java.time.LocalDateTime;
 public class AssessmentAnswerCreatedEvent implements IDomainEvent {
     private final Long answerId;
     private final String question;
+    private final String dimensionName;
+    private final String assessmentTypeName;
     private final String answer;
 
-    public AssessmentAnswerCreatedEvent(Long answerId, String question, String answer) {
+    public AssessmentAnswerCreatedEvent(
+            Long answerId,
+            String question,
+            String dimensionName,
+            String assessmentTypeName,
+            String answer
+    ) {
         this.answerId = answerId;
         this.question = question;
+        this.dimensionName = dimensionName;
+        this.assessmentTypeName = assessmentTypeName;
         this.answer = answer;
     }
 
@@ -23,6 +33,14 @@ public class AssessmentAnswerCreatedEvent implements IDomainEvent {
     @Override
     public LocalDateTime getOccurredAt() {
         return LocalDateTime.now();
+    }
+
+    public String getAssessmentTypeName() {
+        return assessmentTypeName;
+    }
+
+    public String getDimensionName() {
+        return dimensionName;
     }
 
     public Long getAnswerId() {

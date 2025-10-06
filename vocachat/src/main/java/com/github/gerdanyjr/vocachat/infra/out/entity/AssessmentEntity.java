@@ -18,24 +18,39 @@ public class AssessmentEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "assessment_id")
-    private Long assesmentId;
+    private Long assessmentId;
 
     @OneToOne
     @JoinColumn(name = "user_id", nullable = false)
     private UserEntity userEntity;
 
-    @Column(name = "test_type", nullable = false)
-    private Integer testType;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "assessment_type_id", nullable = false)
+    private AssessmentTypeEntity assessmentTypeEntity;
 
     @Column(name = "started_at", nullable = false)
     private LocalDateTime startedAt;
 
-    @Column(name = "finished_at", nullable = false)
+    @Column(name = "finished_at")
     private LocalDateTime finishedAt;
 
-    @Column(name = "assesment_state", nullable = false)
-    private Integer assesmentState;
+    @Column(name = "processed_at")
+    private LocalDateTime processedAt;
+
+    @Column(name = "assessment_state", nullable = false)
+    private Integer assessmentState;
 
     @OneToMany(mappedBy = "assessmentEntity")
     private List<AssessmentAnswerEntity> answers;
+
+    @OneToMany(mappedBy = "assessmentEntity")
+    private List<MessageEntity> messages;
+
+    public Integer getAssessmentState() {
+        return assessmentState;
+    }
+
+    public void setAssessmentState(Integer assessmentState) {
+        this.assessmentState = assessmentState;
+    }
 }
